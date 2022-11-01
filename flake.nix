@@ -15,7 +15,7 @@
 					clang-format --style=microsoft -i src/*
 
 					echo "editorconfig code formatting"
-					eclint fix *
+					# eclint fix *
 				'';
 			in {
 				devShells = {
