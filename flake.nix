@@ -12,10 +12,10 @@
 				pkgs = nixpkgs.legacyPackages.${system};
 				ci-formatting = pkgs.writeScriptBin "code-formatting" ''
 					echo "clang-format code formatting"
-					clang-format -i src/*
+					clang-format --style=microsoft -i src/*
 
 					echo "editorconfig code formatting"
-					eclint
+					eclint fix *
 				'';
 			in {
 				devShells = {
