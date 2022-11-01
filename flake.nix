@@ -15,7 +15,7 @@
 					clang-format --style=microsoft -i src/*
 
 					echo "-> editorconfig code formatting"
-					eclint fix *
+					eclint fix
 				'';
 				ci-code-update = pkgs.writeScriptBin "code-update" ''
 					echo "-> push changed code to git"
