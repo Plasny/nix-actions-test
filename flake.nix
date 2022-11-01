@@ -21,7 +21,7 @@
 					echo "-> push changed code to git"
 					git config --global user.name 'Plasny'
 					git config --global user.email 'git.plasny.uq95y@slmail.me'
-					git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
+					git remote set-url origin https://x-access-token:$\{{ secrets.GITHUB_TOKEN }}@github.com/$\{{ github.repository }}
 					git commit -am "Auto update for $(git log -n 1 --pretty=format:"%h")"
 					git push
 				'';
