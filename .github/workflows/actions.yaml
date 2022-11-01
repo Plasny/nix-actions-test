@@ -1,0 +1,14 @@
+name: learn-actions
+
+on: [push]
+
+jobs:
+  nix-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: git checkout
+        uses: actions/checkout@v3
+      - name: install nix
+        uses: cachix/install-nix-action@v18
+      - name: format code
+        run: nix develop --command code-formatting
