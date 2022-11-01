@@ -1,16 +1,12 @@
-#include   <stdio.h>
+#include <stdio.h>
 
-int h,
-		s =2,
-	aaa=21;
+int h, s = 2, aaa = 21;
 
-char a[12] =
-	"Hello World!";
+char a[12] = "Hello World!";
 
+int main()
+{
+    printf("%s", a);
 
-int  main()
-  {
-  printf("%s",    a);
-
- 	   return 0;
+    return 0;
 }
