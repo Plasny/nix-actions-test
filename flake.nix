@@ -28,7 +28,7 @@
 			in {
 				devShells = {
 					default = pkgs.mkShell {
-						buildInputs = [ ci-code-format, ci-code-update ] ++ (with pkgs; [
+						buildInputs = [ ci-code-format ci-code-update ] ++ (with pkgs; [
 							git
 
 							# packages needed for code formatting
