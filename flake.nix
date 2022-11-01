@@ -13,9 +13,6 @@
 				ci-code-format = pkgs.writeScriptBin "code-format" ''
 					echo "-> clang-format code formatting"
 					clang-format --style=microsoft -i src/*
-
-					echo "-> editorconfig code formatting"
-					eclint fix $(git ls-files)
 				'';
 				ci-code-update = pkgs.writeScriptBin "code-update" ''
 					echo "-> push changed code to git"
@@ -33,7 +30,6 @@
 
 							# packages needed for code formatting
 							clang
-							eclint
 						]);
 					};
 				};
