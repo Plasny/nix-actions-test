@@ -13,4 +13,8 @@ jobs:
       - name: format code
         run: nix develop --command code-format
       - name: update code
-        run: nix develop --command code-update
+        run: nix develop --command github-code-update
+      # work in progress
+      - name: run code
+        if: containes(github.event.head_commit.message, '[run]')
+        run: nix develop --command code-run

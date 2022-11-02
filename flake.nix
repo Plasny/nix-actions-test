@@ -12,9 +12,13 @@
 				pkgs = nixpkgs.legacyPackages.${system};
 				ci-code-format = pkgs.writeScriptBin "code-format" ''
 					echo "-> clang-format code formatting"
-					clang-format --style=microsoft -i src/*
+					clang-format --style=microsoft -i src/*.c
 				'';
-				ci-code-update = pkgs.writeScriptBin "code-update" ''
+				ci-code-run = pkgs.writeScriptBin "code-run" ''
+					# change in future to nix build and nix run :D
+					v run src/main.v
+				'';
+				ci-code-update = pkgs.writeScriptBin "github-code-update" ''
 					echo "-> push changed code to git"
 					git config --global user.name 'Plasny'
 					git config --global user.email 'git.plasny.uq95y@slmail.me'
@@ -25,11 +29,14 @@
 			in {
 				devShells = {
 					default = pkgs.mkShell {
-						buildInputs = [ ci-code-format ci-code-update ] ++ (with pkgs; [
+						buildInputs = [ ci-code-format ci-code-run ci-code-update ] ++ (with pkgs; [
 							git
 
-							# packages needed for code formatting
+							# packages needed for v code compilation
 							clang
+							vlang
+							libatomic_ops
+							openssl
 						]);
 					};
 				};
