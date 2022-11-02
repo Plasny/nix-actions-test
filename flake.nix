@@ -36,7 +36,7 @@
 					echo "-> release packages on github"
 					gh release create \
 						-F changelog.md \
-						-t "test release" \
+						v0.1 \
 						app-windows.exe app-linux
 				'';
 			in {
