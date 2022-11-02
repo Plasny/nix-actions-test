@@ -8,14 +8,19 @@ jobs:
     steps:
       - name: git checkout
         uses: actions/checkout@v3
+
       - name: install nix
         uses: cachix/install-nix-action@v18
+
       - name: prepare environment
         run: nix develop --command echo OK
+
       - name: format code
         run: nix develop --command code-format
+
       - name: update code
         run: nix develop --command github-code-update
+
       # work in progress
       - name: run code
         if: contains(github.event.head_commit.message, 'run')
@@ -24,8 +29,9 @@ jobs:
       - name: build code
         if: contains(github.event.head_commit.message, 'build') || contains(github.event.head_commit.message, 'release' )
         run: nix develop --command code-build
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
       - name: release code
         if: contains(github.event.head_commit.message, 'release')
         run: nix develop --command github-release
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
