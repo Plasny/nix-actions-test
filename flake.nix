@@ -34,7 +34,6 @@
 				'';
 				ci-release = pkgs.writeScriptBin "github-release" ''
 					echo "-> release packages on github"
-					gh auth login --with-token $\{{ secrets.GITHUB_TOKEN }}
 					gh release create \
 						-F changelog.md \
 						app-windows.exe app-linux
