@@ -22,7 +22,7 @@ jobs:
         run: nix develop --command code-run
 
       - name: build code
-        if: contains(github.event.head_commit.message, 'build||release')
+        if: contains(github.event.head_commit.message, 'build' 'release' )
         run: nix develop --command code-build
       - name: release code
         if: contains(github.event.head_commit.message, 'release')
