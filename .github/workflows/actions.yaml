@@ -16,5 +16,5 @@ jobs:
         run: nix develop --command github-code-update
       # work in progress
       - name: run code
-        if: containes(github.event.head_commit.message, '[run]')
+        if: contains(github.event.head_commit.message, '[run]')
         run: nix develop --command code-run
